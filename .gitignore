@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+node_modules/
+frontend/dist/
+data/app.db
+data/media/
+data/sec-interview-repo/
+
+# 打包产物
+dist/
+build/
+apk/build/
+apk/assets/
+frontend/dist-apk/
+data/
+*.log
