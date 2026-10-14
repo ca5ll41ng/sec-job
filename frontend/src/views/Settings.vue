@@ -5,14 +5,8 @@
   <div class="card" style="margin-bottom: 14px">
     <h3 style="margin: 0 0 8px">刷题记录</h3>
     <p style="font-size: 13.5px; color: var(--muted); margin: 0 0 10px">
-      <template v-if="!isOffline">
-        本机标识：<code style="font-size: 12px">{{ cid.slice(0, 8) }}…</code>
-        <a href="javascript:;" @click="copyId" style="margin-left: 6px">复制</a><br />
-        进度保存在服务器上，同一浏览器自动同步；换浏览器或设备会重新开始记录。
-      </template>
-      <template v-else>
-        当前为离线模式（APK），进度保存在本机浏览器存储中。
-      </template>
+      <template v-if="!isOffline">进度保存在服务器上，同一浏览器自动同步；换浏览器或设备会重新开始记录。</template>
+      <template v-else>当前为离线模式，进度保存在本机。</template>
     </p>
     <button class="btn" @click="clearProgress">🗑️ 清空刷题记录</button>
   </div>
@@ -36,13 +30,11 @@
   </div>
 
   <div class="card">
-    <h3 style="margin: 0 0 8px">数据说明</h3>
-    <div style="font-size: 13.5px; color: var(--muted); line-height: 2">
-      📚 题库来源：
-      <a href="https://github.com/duckpigdog/Sec-Interview" target="_blank">duckpigdog/Sec-Interview</a>
-      （服务器运行 <code>python cli.py import-repo</code> 可拉取最新题目）<br />
-      📰 公众号文章导入：<code>python cli.py wechat &lt;文章链接&gt;</code>，或在上方表单直接粘贴链接<br />
-      💼 面经：在「面经」页点击「导入」，粘贴链接或文本并填写企业名
+    <h3 style="margin: 0 0 8px">关于</h3>
+    <div style="font-size: 13.5px; color: var(--muted); line-height: 2.2">
+      题库来源：<a href="https://github.com/duckpigdog/Sec-Interview" target="_blank">Sec-Interview</a><br />
+      项目地址：<a href="https://github.com/ca5ll41ng/sec-job" target="_blank">ca5ll41ng/sec-job</a><br />
+      批量导入题目或面经请参照项目 README，在服务器端操作。
     </div>
   </div>
 </template>
@@ -50,21 +42,14 @@
 <script setup>
 import { ref } from 'vue'
 import { clearAllProgress, importWechat as importWechatApi, offline } from '../data'
-import { clientId } from '../api'
 import { toast, loadProgress } from '../store'
 import { APP_VERSION } from '../update'
 
 const isOffline = offline
-const cid = clientId()
 const wxUrl = ref('')
 const wxCat = ref('')
 const wxSplit = ref(true)
 const wxImporting = ref(false)
-
-function copyId() {
-  navigator.clipboard?.writeText(cid)
-  toast('已复制')
-}
 
 async function clearProgress() {
   if (!confirm('确定清空全部刷题记录（掌握/错题/收藏）？')) return

@@ -57,7 +57,7 @@
     <div class="empty" v-if="s && !s.total_questions">
       <div class="big">📭</div>
       题库为空<br />
-      <small>请在服务器上运行 <code>python cli.py import-repo</code> 导入题库</small>
+      <small>请参照 <a href="https://github.com/ca5ll41ng/sec-job#readme" target="_blank">项目 README</a> 导入题目</small>
     </div>
   </div>
 </template>

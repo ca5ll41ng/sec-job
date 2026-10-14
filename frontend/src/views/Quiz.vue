@@ -22,7 +22,7 @@
 
     <div class="q-card" v-if="cur" @touchstart="onTouchStart" @touchend="onTouchEnd">
       <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
-        <span class="chip gray">{{ cur.source_type === 'repo' ? '面试题库' : cur.source_type === 'wechat' ? '公众号' : '手动添加' }}</span>
+        <span class="chip gray">{{ cur.source_type === 'wechat' ? '公众号' : cur.source_type === 'manual' ? '手动添加' : '面试题库' }}</span>
         <a v-if="cur.source_url" :href="cur.source_url" target="_blank" class="chip gray" style="text-decoration: none">原文 ↗</a>
       </div>
       <h1 class="q-title">{{ cur.title }}</h1>
