@@ -1,6 +1,6 @@
 <template>
   <h1 class="page-title">设置</h1>
-  <p class="page-sub">学习进度与数据管理</p>
+  <p class="page-sub">当前版本 v{{ APP_VERSION }}</p>
 
   <div class="card" style="margin-bottom: 14px">
     <h3 style="margin: 0 0 8px">刷题记录</h3>
@@ -52,6 +52,7 @@ import { ref } from 'vue'
 import { clearAllProgress, importWechat as importWechatApi, offline } from '../data'
 import { clientId } from '../api'
 import { toast, loadProgress } from '../store'
+import { APP_VERSION } from '../update'
 
 const isOffline = offline
 const cid = clientId()

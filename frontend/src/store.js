@@ -5,6 +5,7 @@ export const store = reactive({
   progress: {},
   home: null,
   toast: '',
+  updateInfo: null,
 })
 
 let toastTimer

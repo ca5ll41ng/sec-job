@@ -14,3 +14,4 @@ apk/assets/
 frontend/dist-apk/
 data/
 *.log
+/*.zip

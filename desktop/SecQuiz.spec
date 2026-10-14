@@ -11,6 +11,7 @@ a = Analysis(
     binaries=[],
     datas=[
         (str(ROOT / "frontend" / "dist"), "frontend_dist"),
+        (str(ROOT / "VERSION"), "."),
     ],
     hiddenimports=[
         "uvicorn.logging",

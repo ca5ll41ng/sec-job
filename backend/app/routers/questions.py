@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 
 from ..db import get_db
 from ..models import Experience, Progress, Question
+from ..version import APP_VERSION
 
 router = APIRouter(tags=["questions"])
 
@@ -75,6 +76,7 @@ def home(client_id: str | None = Header(default=None, alias="X-Client-Id"), db: 
         .all()
     )
     return {
+        "version": APP_VERSION,
         "total_questions": total,
         "known": known,
         "unknown": unknown,
